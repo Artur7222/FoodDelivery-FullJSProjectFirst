@@ -1,80 +1,32 @@
-'use strict'
+'use strict';
 
-// function showThis(a, b) {
-//     console.log(this);
-//     function sum() {
-//         console.log(this);
-//         return a + b;
-//     }
-
-//     console.log(sum());
-// };
-
-// showThis(4, 5); 
-
-// const obj = {
-//     a:20,
-//     b:15,
-//     sum: function() {
-//         function shout() {
-//             console.log(this);
-//         }
-
-//         shout();
-//     }
-// };
-
-// obj.sum();
-
-// function User(name, id) {
-//     this.name = name;
-//     this.id = id;
-//     this.human = true;
-//     this.hello = function() {
-//         console.log('Hello!' + this.name);
-//     };
-// }
-
-// let Artur = new User('Artur', 28); 
-
-// function sayName(surname) {
-//     console.log(this);
-//     console.log(this.name + surname);
-// }
-
-// const user = {
-//     name: 'John'
-// };
-
-// sayName.call(user, 'Ushakov'); 
-// sayName.apply(user, ['Ushakov']);
-
-// function count(num) {
-//     return this*num;
-// }
-
-// const double = count.bind(2);
-// console.log(double(3));
-// console.log(double(13)); 
-
-const btn = document.querySelector('button');
-btn.addEventListener('click', function () {
-    this.style.backgroundColor = 'green'; 
-}); 
-
-const obj = {
-    num: 5,
-    sayNumber: function() {
-        const say = () => {
-            console.log(this.num);
-        };
-
-        say();
+class Rectangle {
+    constructor(height, width) {
+        this.height = height;
+        this.width = width;
     }
-};
 
-obj.sayNumber(); 
+    calcArea() {
+        return this.height * this.width;
+    }
+}
+class ColoredRectanglWithText extends Rectangle {
+    constructor(height, width, text, bgColor) {
+        super(height, width);
+        this.text = text;
+        this.bgColor = bgColor;
+    }
 
-const double = a => a * 2;
+    showMyProps() {
+        console.log(`Текст: ${this.text}, цвет: ${this.bgColor}`)
+    }
+}
 
-console.log (double(4)); 
+const div = new ColoredRectanglWithText(25, 10, 'Hello Artur', 'red');
+div.showMyProps();
+console.log(div.calcArea());
+
+// const square = new Rectangle(10, 10); 
+// const long = new Rectangle(20,100);
+// console.log(square.calcArea());
+// console.log(long.calcArea());  
