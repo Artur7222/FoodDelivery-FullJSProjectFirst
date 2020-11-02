@@ -1,23 +1,80 @@
-function User (name, id) {
-    this.name = name;
-    this.id = id;
-    this.human = true;
-    this.hello = function() {
-        console.log(`Hello ${this.name}`)
-    };
-}
+'use strict'
 
-User.prototype.exit = function(name) {
-    console.log(`Пользователь ${this.name} ушел`);
-}
+// function showThis(a, b) {
+//     console.log(this);
+//     function sum() {
+//         console.log(this);
+//         return a + b;
+//     }
 
-const Artur = new User ('Artur', 28); 
-const Dasha = new User ('Dasha', 18);
+//     console.log(sum());
+// };
 
-Artur.exit(); 
+// showThis(4, 5); 
 
-Artur.hello(); 
-Dasha.hello(); 
+// const obj = {
+//     a:20,
+//     b:15,
+//     sum: function() {
+//         function shout() {
+//             console.log(this);
+//         }
 
-console.log(Artur);
-console.log(Dasha); 
+//         shout();
+//     }
+// };
+
+// obj.sum();
+
+// function User(name, id) {
+//     this.name = name;
+//     this.id = id;
+//     this.human = true;
+//     this.hello = function() {
+//         console.log('Hello!' + this.name);
+//     };
+// }
+
+// let Artur = new User('Artur', 28); 
+
+// function sayName(surname) {
+//     console.log(this);
+//     console.log(this.name + surname);
+// }
+
+// const user = {
+//     name: 'John'
+// };
+
+// sayName.call(user, 'Ushakov'); 
+// sayName.apply(user, ['Ushakov']);
+
+// function count(num) {
+//     return this*num;
+// }
+
+// const double = count.bind(2);
+// console.log(double(3));
+// console.log(double(13)); 
+
+const btn = document.querySelector('button');
+btn.addEventListener('click', function () {
+    this.style.backgroundColor = 'green'; 
+}); 
+
+const obj = {
+    num: 5,
+    sayNumber: function() {
+        const say = () => {
+            console.log(this.num);
+        };
+
+        say();
+    }
+};
+
+obj.sayNumber(); 
+
+const double = a => a * 2;
+
+console.log (double(4)); 
